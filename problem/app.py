@@ -5,6 +5,7 @@ def mod(num, denominator):
     return num - (denominator * int(num/denominator))
 
 
+# Reference: https://mathbits.com/MathBits/CompSci/Introduction/tobase10.htm
 def to_base10(num, base):
     result = 0
     power = 0
@@ -18,6 +19,7 @@ def to_base10(num, base):
     return result
 
 
+# Reference: https://mathbits.com/MathBits/CompSci/Introduction/frombase10.htm
 def to_base(num, from_base, to_base):
     num_to_divide = to_base10(num, from_base)
 
