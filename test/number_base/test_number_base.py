@@ -1,40 +1,11 @@
 import unittest
 
-
-def mod(num, denominator):
-    return num - (denominator * int(num/denominator))
-
-
-# Reference: https://mathbits.com/MathBits/CompSci/Introduction/tobase10.htm
-def to_base10(num, base):
-    result = 0
-    power = 0
-
-    while num != 0:
-        result += (mod(num, 10)) * pow(base, power)
-        num -= (mod(num, 10))
-        num = int(num / 10)
-        power += 1
-
-    return result
+from problem.number_base.app import to_base
+from problem.number_base.app import to_base10
+from problem.number_base.app import mod
 
 
-# Reference: https://mathbits.com/MathBits/CompSci/Introduction/frombase10.htm
-def to_base(num, from_base, to_base):
-    num_to_divide = to_base10(num, from_base)
-
-    power = 0
-    result = 0
-    while num_to_divide != 0:
-        remainder = mod(num_to_divide, to_base)
-        result += remainder * pow(10, power)
-        power += 1
-        num_to_divide = int(num_to_divide / to_base)
-
-    return result
-
-
-class TestBaseConverter(unittest.TestCase):
+class TestNumberBase(unittest.TestCase):
     def test_mod(self):
         self.assertEqual(mod(235, 10), 5)
         self.assertEqual(mod(235, 8), 3)
@@ -79,7 +50,3 @@ class TestBaseConverter(unittest.TestCase):
         self.assertEqual(to_base(-235, 12, 4), -11021)
         self.assertEqual(to_base(-235, 6, 13), -74)
         self.assertEqual(to_base(-235, 13, 6), -1434)
-
-
-if __name__ == '__main__':
-    unittest.main()
